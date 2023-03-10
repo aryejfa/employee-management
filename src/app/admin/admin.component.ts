@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { trigger, query, group, transition, animate, style } from '@angular/animations';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',

@@ -30,6 +30,14 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       localStorage.setItem('appToken', '123456789');
       this.router.navigate(['admin/dashboard']);
+      Swal.fire({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        icon: 'success',
+        timer: 3000,
+        title: 'Login success'
+      })
     } else {
       if (user.email == undefined || user.password == undefined) {
         this.loading = false;
