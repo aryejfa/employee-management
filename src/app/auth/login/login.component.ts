@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -30,8 +31,27 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('appToken', '123456789');
       this.router.navigate(['admin/dashboard']);
     } else {
-      this.loading = false;
-      alert('Username atau password tidak cocok!');
+      if (user.email == undefined || user.password == undefined) {
+        this.loading = false;
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: 'warning',
+          timer: 3000,
+          title: 'Username or password is required'
+        })
+      } else {
+        this.loading = false;
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: 'error',
+          timer: 3000,
+          title: 'Username or password not match'
+        })
+      }
       this.router.navigate(['login']);
     }
   }

@@ -7,13 +7,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { MaterialDesign } from './material/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AnimationComponent } from './animation/animation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AnimationComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -34,9 +34,7 @@ export class EmployeeComponent implements OnInit {
     }, 1000)
   }
 
-  data: any = [];
   toggleData() {
-    this.data = this.data.length ? [] : [1, 2, 3, 4, 5, 6, 7, 8, 9];
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, query, group, transition, animate, style } from '@angular/animations';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -48,11 +49,30 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
-    let conf = confirm('Keluar aplikasi?');
-    if (conf) {
-      localStorage.removeItem('appToken');
-      this.router.navigate(['/login']);
-    }
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-warning'
+      },
+      buttonsStyling: true,
+    });
+    swalWithBootstrapButtons.fire(
+      {
+        showCloseButton: true,
+        title: 'Logout',
+        text: 'Are you sure logout?',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        reverseButtons: false
+      }
+    ).then((result) => {
+      if (result.value) {
+        localStorage.removeItem('appToken');
+        this.router.navigate(['/login']);
+        return;
+      }
+    });
   }
 
   menu = [

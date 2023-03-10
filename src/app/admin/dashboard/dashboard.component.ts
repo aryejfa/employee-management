@@ -33,10 +33,7 @@ export class DashboardComponent implements OnInit {
       this.toggleData();
     }, 1000)
   }
-
-  data: any = [];
   toggleData() {
-    this.data = this.data.length ? [] : [1, 2, 3, 4, 5, 6, 7, 8, 9];
   }
 
 }
