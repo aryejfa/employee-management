@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { AdminComponent } from './admin.component';
 
 // route link
 const routes: Routes = [
