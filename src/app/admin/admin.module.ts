@@ -4,6 +4,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin.component';
+import { MaterialDesign } from '../material/material';
+import { FormsModule } from '@angular/forms';
 
 // route link
 const routes: Routes = [
@@ -19,7 +21,7 @@ const routes: Routes = [
       {
         path: 'employee',
         component: EmployeeComponent,
-        data:{animation:'employee'}
+        data: { animation: 'employee' }
       },
       {
         path: '',
@@ -40,6 +42,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    MaterialDesign,
+    FormsModule
   ]
 })
 export class AdminModule { }

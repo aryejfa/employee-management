@@ -1,0 +1,6 @@
+<div class="uk-flex uk-grid uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
+  <div class="uk-width-1-3 uk-flex uk-flex-column uk-flex-center uk-flex-middle">
+    <div [@myAnimation]="isOpen ? 'open':'close'" style="width: 100%; padding-bottom: 100%;"></div>
+    <button mat-button (click)="isOpen = !isOpen">Play</button>
+  </div>
+</div>
