@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, query, group, transition, animate, style, stagger } from '@angular/animations';
+import EmployeesJson from '../../data/data.json';
+
+interface Employees {
+  username: String;
+  firstName: String;
+  lastName: String;
+  email: String;
+  birthDate: String;
+  basicSalary: any;
+  status: String;
+  group: String;
+  description: String;
+}
+
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -25,6 +39,7 @@ export class EmployeeComponent implements OnInit {
   title: any;
   isOpen: boolean = true;
 
+  employeesResult: Employees[] = EmployeesJson.data;
   constructor() { }
 
   ngOnInit(): void {

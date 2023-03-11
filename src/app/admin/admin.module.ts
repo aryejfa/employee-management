@@ -6,6 +6,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin.component';
 import { MaterialDesign } from '../material/material';
 import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 
 // route link
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialDesign,
-    FormsModule
+    FormsModule,
+    DataTablesModule
   ]
 })
 export class AdminModule { }

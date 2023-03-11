@@ -10,14 +10,14 @@
   </mat-toolbar>
   <!--end toolbar-->
 
-  <mat-sidenav-container [hasBackdrop]="true" class="admin-container">
+  <mat-sidenav-container [hasBackdrop]="false" class="admin-container">
 
-    <mat-sidenav #sidenav mode="side" [position]="'start'" [opened]="false" class="sidenav-left" [fixedInViewport]="true"
+    <mat-sidenav #sidenav mode="side" [position]="'start'" [opened]="true" class="sidenav-left" [fixedInViewport]="true"
       [fixedTopGap]="60" [fixedBottomGap]="0">
 
       <mat-nav-list >
         <div *ngFor="let item of menu">
-          <mat-list-item routerLink="{{ item.url }}" (click)="this.sidenav.close()">
+          <mat-list-item routerLink="{{ item.url }}" (click)="this.sidenav.open()">
             <div class="icon-text">
               <mat-icon matListIcon>{{ item.icon }}</mat-icon>
               <h3 class="v-align-middle" matLine>{{ item.name }}</h3>

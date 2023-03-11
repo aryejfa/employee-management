@@ -1,4 +1,4 @@
-<mat-card class="full-height">
+<mat-card>
   <mat-card-header>
     <mat-card-title>{{ title }}</mat-card-title>
   </mat-card-header>
@@ -6,6 +6,41 @@
     <div class="uk-flex">
       <span class="uk-width-expand">Data Employee Management
       </span>
+    </div>
+
+    <div class="top-card">
+      <mat-card class="padding-card custom-responsive">
+        <table datatable class="row-border hover">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Birth Date</th>
+              <th>Basic Salary</th>
+              <th>Status</th>
+              <th>Group</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employees of employeesResult">
+              <td>{{ employees.username }}</td>
+              <td>{{ employees.firstName }}</td>
+              <td>{{ employees.lastName }}</td>
+              <td>{{ employees.email }}</td>
+              <td>{{ employees.birthDate }}</td>
+              <td>
+                {{ employees.basicSalary | currency:"Rp " }}
+              </td>
+              <td>{{ employees.status }}</td>
+              <td>{{ employees.group }}</td>
+              <td>{{ employees.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
     </div>
   </mat-card-content>
 </mat-card>
