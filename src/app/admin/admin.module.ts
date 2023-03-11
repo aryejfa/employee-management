@@ -7,6 +7,8 @@ import { AdminComponent } from './admin.component';
 import { MaterialDesign } from '../material/material';
 import { FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 // route link
 const routes: Routes = [
@@ -38,7 +40,9 @@ const routes: Routes = [
   declarations: [
     DashboardComponent,
     AdminComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeDetailComponent,
+    EmployeeFormComponent
   ],
   imports: [
     CommonModule,

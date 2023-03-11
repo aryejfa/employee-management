@@ -9,20 +9,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  //inisial untuk data formulir
   user: any = {};
   hide: boolean = true;
-  //constructor
   constructor(
     public router: Router
   ) { }
-  //fungsi inisial, dijalankan ketika class ini dipanggil
   ngOnInit(): void {
   }
-  //form validation
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
-  //register
   loading: boolean = false;
   login(user: any) {
     this.loading = true;

@@ -2,6 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, query, group, transition, animate, style } from '@angular/animations';
 import Swal from 'sweetalert2';
+import EmployeesJson from '../data/data.json';
+interface Employees {
+  username: String;
+  firstName: String;
+  lastName: String;
+  email: String;
+  birthDate: String;
+  basicSalary: any;
+  status: String;
+  group: String;
+  description: String;
+}
 
 @Component({
   selector: 'app-admin',
@@ -34,10 +46,24 @@ export class AdminComponent implements OnInit {
   mode: string = 'side';
   constructor(
     public router: Router
-  ) { }
+  ) {
+    this.getEmployees();
+  }
 
   ngOnInit(): void {
     this.checkLogin();
+  }
+
+  getEmployees() {
+    if (localStorage.getItem('employees') === null || localStorage.getItem('employees') == undefined) {
+      let employeesJsonRes: Employees[] = EmployeesJson.data;
+      let data = employeesJsonRes
+
+      localStorage.setItem('employees', JSON.stringify(data));
+      return
+    } else {
+      return
+    }
   }
 
   checkLogin() {

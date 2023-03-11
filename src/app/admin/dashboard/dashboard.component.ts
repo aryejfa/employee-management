@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, query, group, transition, animate, style, stagger } from '@angular/animations';
+import { trigger, query, transition, animate, style, stagger } from '@angular/animations';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
