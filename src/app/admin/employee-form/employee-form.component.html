@@ -38,12 +38,16 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="wp-padding">
       <mat-label>Group</mat-label>
-      <mat-select placeholder="Select Group" [(value)]="selected" [(ngModel)]="data.group">
-        <mat-option *ngFor="let option of options" [value]="option.name">
-          {{ option.name }}
-        </mat-option>
+      <mat-select [(value)]="selected" [(ngModel)]="data.group">
+        <mat-form-field appearance="outline" class="wp-padding">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="onKey($event.target.value)">
+        </mat-form-field>
+        <mat-option>NONE</mat-option>
+        <mat-option *ngFor="let dtGroup of selectedGroup" [value]="dtGroup">{{ dtGroup }}</mat-option>
       </mat-select>
     </mat-form-field>
+
     <mat-form-field appearance="outline" class="wp-padding">
       <mat-label>Description</mat-label>
       <input matInput value="{{ description }}" [(ngModel)]="data.description">

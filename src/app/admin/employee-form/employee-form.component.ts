@@ -24,20 +24,6 @@ export class EmployeeFormComponent {
   selected: any;
   data: any = {};
 
-  public options = [
-    { "name": "SQL" },
-    { "name": "NO SQL" },
-    { "name": "JAVA" },
-    { "name": "PHP" },
-    { "name": "ANGULAR" },
-    { "name": "VUE JS" },
-    { "name": "REACT JS" },
-    { "name": "DOT NET" },
-    { "name": "SCALA" },
-    { "name": "GOLANG" }
-  ];
-
-
   constructor(
     private router: Router,
     private route: ActivatedRoute
@@ -137,7 +123,23 @@ export class EmployeeFormComponent {
     })
     this.router.navigate(['admin/employee']);
   }
+
   back() {
     this.router.navigate(['admin/employee']);
+  }
+
+  dtGroup: string[] = [
+    'SQL', 'NO SQL', 'JAVA', 'PHP', 'ANGULAR', 'VUE JS', 'REACT JS', 'DOT NET', 'SCALA', 'GOLANG'
+  ];
+
+  selectedGroup = this.dtGroup;
+
+  onKey(value: string) {
+    this.selectedGroup = this.search(value);
+  }
+
+  search(value: string) {
+    let filter = value.toLowerCase();
+    return this.dtGroup.filter(option => option.toLowerCase().startsWith(filter));
   }
 }
