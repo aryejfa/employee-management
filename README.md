@@ -27,6 +27,10 @@ ng serve --open
 
 Open apps by localhost
 http://localhost:4200
+
+Access Login
+Username : aryejfa@gmail.com
+Password : 123456
 ```
 
 # Environment
