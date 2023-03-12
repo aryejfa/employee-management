@@ -15,8 +15,5 @@ export class EmployeeDetailComponent {
   }
   ngOnInit(): void {
   }
-  saveData() {
-    this.dialogRef.close(this.data);
-  }
 }
 

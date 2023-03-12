@@ -27,32 +27,32 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['admin/dashboard']);
       Swal.fire({
         toast: true,
-        position: 'top',
+        position: 'top-end',
         showConfirmButton: false,
         icon: 'success',
         timer: 3000,
-        title: 'Login success'
+        title: 'login successfully'
       })
     } else {
       if (user.email == undefined || user.password == undefined) {
         this.loading = false;
         Swal.fire({
           toast: true,
-          position: 'top',
+          position: 'top-end',
           showConfirmButton: false,
           icon: 'warning',
           timer: 3000,
-          title: 'Username or password is required'
+          title: 'username or password is required'
         })
       } else {
         this.loading = false;
         Swal.fire({
           toast: true,
-          position: 'top',
+          position: 'top-end',
           showConfirmButton: false,
           icon: 'error',
           timer: 3000,
-          title: 'Username or password not match'
+          title: 'username or password not match'
         })
       }
       this.router.navigate(['login']);

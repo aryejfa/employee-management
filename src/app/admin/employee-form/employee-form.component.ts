@@ -1,5 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-form',
@@ -7,15 +8,136 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./employee-form.component.scss']
 })
 export class EmployeeFormComponent {
-  constructor(
-    public dialogRef: MatDialogRef<EmployeeFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
 
+  private sub: any;
+  statusForm: boolean = false;
+
+  username: any;
+  firstName: any;
+  lastName: any;
+  email: any;
+  birthDate: any;
+  basicSalary: any;
+  status: any;
+  group: any;
+  description: any;
+  selected: any;
+  data: any = {};
+
+  public options = [
+    { "name": "SQL" },
+    { "name": "NO SQL" },
+    { "name": "JAVA" },
+    { "name": "PHP" },
+    { "name": "ANGULAR" },
+    { "name": "VUE JS" },
+    { "name": "REACT JS" },
+    { "name": "DOT NET" },
+    { "name": "SCALA" },
+    { "name": "GOLANG" }
+  ];
+
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
   }
   ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {
+      this.username = params['username'];
+
+      if (this.username == undefined) {
+        this.statusForm = true;
+      } else {
+        this.statusForm = false;
+      }
+
+      let employees: any = localStorage.getItem('employees');
+      let resData = JSON.parse(employees);
+
+      for (let i = 0; i < resData.length; i++) {
+        if (resData[i].username == this.username) {
+          this.firstName = resData[i].firstName;
+          this.lastName = resData[i].lastName;
+          this.email = resData[i].email;
+          this.birthDate = resData[i].birthDate;
+          this.basicSalary = resData[i].basicSalary;
+          this.status = resData[i].status;
+          this.group = resData[i].group;
+          this.description = resData[i].description;
+          this.selected = resData[i].group;
+
+          let dt = {
+            username: resData[i].username,
+            firstName: resData[i].firstName,
+            lastName: resData[i].lastName,
+            email: resData[i].email,
+            birthDate: resData[i].birthDate,
+            basicSalary: resData[i].basicSalary,
+            status: resData[i].status,
+            group: resData[i].group,
+            description: resData[i].description,
+          }
+          this.data = dt;
+
+        }
+
+      }
+
+
+
+    });
   }
-  saveData() {
-    this.dialogRef.close(this.data);
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+  editData(data: any) {
+    let employees: any = localStorage.getItem('employees');
+    let resData = JSON.parse(employees);
+
+    for (let i = 0; i < resData.length; i++) {
+      if (resData[i].username == data.username) {
+        resData[i].status = data.status;
+        resData[i].lastName = data.lastName;
+        resData[i].group = data.group;
+        resData[i].firstName = data.firstName;
+        resData[i].email = data.email;
+        resData[i].description = data.description;
+        resData[i].birthDate = data.birthDate;
+        resData[i].basicSalary = data.basicSalary;
+      }
+    }
+    localStorage.setItem('employees', JSON.stringify(resData));
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      icon: 'warning',
+      timer: 3000,
+      title: 'update successfully'
+    })
+    this.router.navigate(['admin/employee']);
+  }
+
+  saveData(data: any) {
+    let employees: any = localStorage.getItem('employees');
+    let resData = JSON.parse(employees);
+    resData.push(data);
+    localStorage.setItem('employees', JSON.stringify(resData));
+
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      icon: 'success',
+      timer: 3000,
+      title: 'insert successfully'
+    })
+    this.router.navigate(['admin/employee']);
+  }
+  back() {
+    this.router.navigate(['admin/employee']);
   }
 }

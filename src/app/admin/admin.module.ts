@@ -27,6 +27,16 @@ const routes: Routes = [
         data: { animation: 'employee' }
       },
       {
+        path: 'employee/edit/:username',
+        component: EmployeeFormComponent,
+        data: { animation: 'employee' }
+      },
+      {
+        path: 'employee/add',
+        component: EmployeeFormComponent,
+        data: { animation: 'employee' }
+      },
+      {
         path: '',
         redirectTo: '/admin/dashboard',
         pathMatch: 'full'

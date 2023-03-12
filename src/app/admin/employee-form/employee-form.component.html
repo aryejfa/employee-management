@@ -1,45 +1,63 @@
-<h3 mat-dialog-title>
-  Add / Edit Employee
-</h3>
-<div mat-dialog-content>
-  <mat-form-field appearance="outline" class="wp-custom-padding">
-    <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]="data.username">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>First Name</mat-label>
-    <input matInput [(ngModel)]="data.firstName">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Last Name</mat-label>
-    <input matInput [(ngModel)]="data.lastName">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Email</mat-label>
-    <input matInput [(ngModel)]="data.email" type="email" [email]="true">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Birth Date</mat-label>
-    <input matInput [(ngModel)]="data.birthDate">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Basic Salary</mat-label>
-    <input matInput [(ngModel)]="data.basicSalary" type="number">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Status</mat-label>
-    <input matInput [(ngModel)]="data.status">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Group</mat-label>
-    <input matInput [(ngModel)]="data.group">
-  </mat-form-field>
-  <mat-form-field appearance="outline" class="wp-padding">
-    <mat-label>Description</mat-label>
-    <input matInput [(ngModel)]="data.description">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-flat-button (click)="saveData()">Save</button>
-</div>
+<mat-card class="full-height">
+  <mat-card-header>
+    <mat-card-title *ngIf="!statusForm">Edit Employee</mat-card-title>
+    <mat-card-title *ngIf="statusForm">Add Employee</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="uk-flex">
+      <span class="uk-width-expand">Data Employee</span>
+    </div>
+    <mat-form-field appearance="outline" class="wp-custom-padding">
+      <mat-label>Username</mat-label>
+      <input matInput value="{{ username }}" [(ngModel)]="data.username" readonly *ngIf="!statusForm">
+      <input matInput value="{{ username }}" [(ngModel)]="data.username" *ngIf="statusForm">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>First Name</mat-label>
+      <input matInput value="{{ firstName }}" [(ngModel)]="data.firstName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Last Name</mat-label>
+      <input matInput value="{{ lastName }}" [(ngModel)]="data.lastName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Email</mat-label>
+      <input matInput value="{{ email }}" type="email" [(ngModel)]="data.email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Birth Date</mat-label>
+      <input matInput value="{{ birthDate }}" [(ngModel)]="data.birthDate">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Basic Salary</mat-label>
+      <input matInput value="{{ basicSalary }}" type="number" [(ngModel)]="data.basicSalary">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Status</mat-label>
+      <input matInput value="{{ status }}" [(ngModel)]="data.status">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Group</mat-label>
+      <mat-select placeholder="Select Group" [(value)]="selected" [(ngModel)]="data.group">
+        <mat-option *ngFor="let option of options" [value]="option.name">
+          {{ option.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Description</mat-label>
+      <input matInput value="{{ description }}" [(ngModel)]="data.description">
+    </mat-form-field>
+
+    <div align="end" *ngIf="!statusForm">
+      <button mat-button (click)="back()">Cancel</button>
+      <button mat-flat-button (click)="editData(data)">Save</button>
+    </div>
+
+    <div align="end" *ngIf="statusForm">
+      <button mat-button (click)="back()">Cancel</button>
+      <button mat-flat-button (click)="saveData(data)">Save</button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

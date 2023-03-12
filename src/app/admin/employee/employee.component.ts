@@ -3,7 +3,6 @@ import { trigger, query, transition, animate, style, stagger } from '@angular/an
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { EmployeeDetailComponent } from '../employee-detail/employee-detail.component';
 
 @Component({
@@ -64,42 +63,12 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  addEditEmployee(data: any, username: any) {
-    let dialog = this.dialog.open(EmployeeFormComponent, {
-      width: '600px',
-      data: data
-    });
-    dialog.afterClosed().subscribe(res => {
-      if (res) {
+  editEmployee(username: any) {
+    this.router.navigate(['admin/employee/edit', username]);
+  }
 
-        if (username == undefined) {
-          let employees: any = localStorage.getItem('employees');
-          let resData = JSON.parse(employees);
-          resData.push(res);
-          localStorage.setItem('employees', JSON.stringify(resData));
-
-          this.reloadCurrentRoute();
-        } else {
-          let employees: any = localStorage.getItem('employees');
-          let resData = JSON.parse(employees);
-
-          for (let i = 0; i < resData.length; i++) {
-            if (resData[i].username == res.username) {
-              resData[i].status = res.status;
-              resData[i].lastName = res.lastName;
-              resData[i].group = res.group;
-              resData[i].firstName = res.firstName;
-              resData[i].email = res.email;
-              resData[i].description = res.description;
-              resData[i].birthDate = res.birthDate;
-              resData[i].basicSalary = res.basicSalary;
-            }
-          }
-          localStorage.setItem('employees', JSON.stringify(resData));
-        }
-
-      }
-    })
+  addFormEmployee() {
+    this.router.navigate(['admin/employee/add']);
   }
 
   detailEmployee(data: any) {
@@ -116,7 +85,7 @@ export class EmployeeComponent implements OnInit {
   deleteEmployee(username: string) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
+        confirmButton: 'btn btn-primary',
         cancelButton: 'btn btn-warning'
       },
       buttonsStyling: true,
@@ -144,6 +113,15 @@ export class EmployeeComponent implements OnInit {
         localStorage.setItem('employees', JSON.stringify(resData));
 
         this.reloadCurrentRoute();
+
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          icon: 'error',
+          timer: 3000,
+          title: 'delete successfully'
+        })
         return;
       }
     });

@@ -1,8 +1,15 @@
 .wp-custom-padding {
-    width: 100%;
-    padding-top: 5px;
-  }
-  .wp-padding {
-    width: 100%;
-  }
-  
+  width: 100%;
+  padding-top: 5px;
+}
+.wp-padding {
+  width: 100%;
+}
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+::ng-deep .mat-select-placeholder {
+  color: black;
+}
