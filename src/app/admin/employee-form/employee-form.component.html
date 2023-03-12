@@ -26,7 +26,9 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="wp-padding">
       <mat-label>Birth Date</mat-label>
-      <input matInput value="{{ birthDate }}" [(ngModel)]="data.birthDate">
+      <input matInput [matDatepicker]="picker" [max]="todayDate" maxlength="0" value="{{ birthDate }}" [(ngModel)]="data.birthDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="outline" class="wp-padding">
       <mat-label>Basic Salary</mat-label>
@@ -47,10 +49,11 @@
         <mat-option *ngFor="let dtGroup of selectedGroup" [value]="dtGroup">{{ dtGroup }}</mat-option>
       </mat-select>
     </mat-form-field>
-
     <mat-form-field appearance="outline" class="wp-padding">
       <mat-label>Description</mat-label>
-      <input matInput value="{{ description }}" [(ngModel)]="data.description">
+      <input matInput [matDatepicker]="pickerDes" maxlength="0" value="{{ description }}" [(ngModel)]="data.description">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerDes"></mat-datepicker-toggle>
+      <mat-datepicker #pickerDes></mat-datepicker>
     </mat-form-field>
 
     <div align="end" *ngIf="!statusForm">

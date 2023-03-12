@@ -37,7 +37,7 @@
               <td>{{ employees.email }}</td>
               <td>{{ employees.birthDate }}</td>
               <td>
-                {{ employees.basicSalary | currency:"Rp " }}
+                {{ formatRupiah(employees.basicSalary) }}
               </td>
               <td>{{ employees.status }}</td>
               <td>{{ employees.group }}</td>

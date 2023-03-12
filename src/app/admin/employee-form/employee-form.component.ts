@@ -24,6 +24,8 @@ export class EmployeeFormComponent {
   selected: any;
   data: any = {};
 
+  todayDate: Date = new Date();
+
   constructor(
     private router: Router,
     private route: ActivatedRoute

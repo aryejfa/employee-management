@@ -24,7 +24,7 @@
   </mat-form-field>
   <mat-form-field appearance="outline" class="wp-padding">
     <mat-label>Basic Salary</mat-label>
-    <input matInput [ngModel]="data.basicSalary | currency :'Rp '" readonly>
+    <input matInput [ngModel]="formatRupiah(data.basicSalary)" readonly>
   </mat-form-field>
   <mat-form-field appearance="outline" class="wp-padding">
     <mat-label>Status</mat-label>
