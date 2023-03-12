@@ -1,0 +1,44 @@
+<h3 mat-dialog-title>
+  Detail Employee
+</h3>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" class="wp-custom-padding">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="data.username" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="data.firstName" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="data.lastName" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="data.email" type="email" [email]="true" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Birth Date</mat-label>
+    <input matInput [(ngModel)]="data.birthDate" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Basic Salary</mat-label>
+    <input matInput [ngModel]="rupiahNumber(data.basicSalary)" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Status</mat-label>
+    <input matInput [(ngModel)]="data.status" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Group</mat-label>
+    <input matInput [(ngModel)]="data.group" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="wp-padding">
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="data.description" readonly>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>OK</button>
+</div>

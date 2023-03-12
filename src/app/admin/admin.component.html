@@ -1,0 +1,43 @@
+<ng-container>
+  <!--toolbar-->
+  <mat-toolbar color="primary" class="example-header">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Employee Management</span>
+    <div class="uk-width-expand"></div>
+    <button mat-button (click)="logout()">Logout</button>
+  </mat-toolbar>
+  <!--end toolbar-->
+
+  <mat-sidenav-container [hasBackdrop]="false" class="admin-container">
+
+    <mat-sidenav #sidenav mode="side" [position]="'start'" [opened]="true" class="sidenav-left" [fixedInViewport]="true"
+      [fixedTopGap]="60" [fixedBottomGap]="0">
+
+      <mat-nav-list >
+        <div *ngFor="let item of menu">
+          <mat-list-item routerLink="{{ item.url }}" (click)="this.sidenav.open()">
+            <div class="icon-text">
+              <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+              <h3 class="v-align-middle" matLine>{{ item.name }}</h3>
+            </div>
+          </mat-list-item>
+
+        </div>
+
+      </mat-nav-list>
+
+
+    </mat-sidenav>
+
+    <mat-sidenav #sidenav mode="side" [position]="'end'" class="admin-sidenav" [fixedInViewport]="true"
+      [fixedTopGap]="60" [fixedBottomGap]="0">
+    </mat-sidenav>
+
+    <mat-sidenav-content [@routeAnimations]="o">
+      <router-outlet #o="outlet"></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</ng-container>
