@@ -16,12 +16,12 @@ export class LoginComponent implements OnInit {
   ) { }
   ngOnInit(): void {
   }
-  email = new FormControl('', [Validators.required, Validators.email]);
+  username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
   loading: boolean = false;
   login(user: any) {
     this.loading = true;
-    if (user.email == 'aryejfa@gmail.com' && user.password == '123456') {
+    if (user.username == 'aryejfa@gmail.com' && user.password == '123456') {
       this.loading = false;
       localStorage.setItem('appToken', '123456789');
       this.router.navigate(['admin/dashboard']);
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         title: 'login successfully'
       })
     } else {
-      if (user.email == undefined || user.password == undefined) {
+      if (user.username == undefined || user.password == undefined) {
         this.loading = false;
         Swal.fire({
           toast: true,
