@@ -43,6 +43,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Component UI [Material Angular](https://material.angular.io/guide/getting-started) version 15.2.2.
 
+**Database:**
+
+This project was generated with Local Storage Browser. 
+Please use Browser Firefox Mozilla or Browser Google Chrome.
+
 ```bash
 ng add @angular/material
 ```
