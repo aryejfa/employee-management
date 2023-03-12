@@ -14,9 +14,8 @@
       <mat-card-content>
         <mat-form-field class="uk-width-1-1" appearance="outline">
           <mat-label>Username</mat-label>
-          <input matInput placeholder="Ex. email@domain.com" [(ngModel)]="user.email" required>
-          <mat-error *ngIf="email.hasError('required')">Username harus diisi</mat-error>
-          <mat-error *ngIf="email.hasError('email')">Format username salah</mat-error>
+          <input matInput placeholder="Username" [(ngModel)]="user.username" required>
+          <mat-error *ngIf="username.hasError('required')">Username harus diisi</mat-error>
         </mat-form-field>
         <mat-form-field class="uk-width-1-1" appearance="outline">
           <mat-label>Password</mat-label>
