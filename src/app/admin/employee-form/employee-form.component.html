@@ -1,0 +1,71 @@
+<mat-card class="full-height">
+  <mat-card-header>
+    <mat-card-title *ngIf="!statusForm">Edit Employee</mat-card-title>
+    <mat-card-title *ngIf="statusForm">Add Employee</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="uk-flex">
+      <span class="uk-width-expand">Data Employee Management</span>
+    </div>
+    <mat-form-field appearance="outline" class="wp-custom-padding top-card">
+      <mat-label>Username</mat-label>
+      <input matInput value="{{ username }}" [(ngModel)]="data.username" readonly *ngIf="!statusForm">
+      <input matInput value="{{ username }}" [(ngModel)]="data.username" *ngIf="statusForm">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>First Name</mat-label>
+      <input matInput value="{{ firstName }}" [(ngModel)]="data.firstName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Last Name</mat-label>
+      <input matInput value="{{ lastName }}" [(ngModel)]="data.lastName">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Email</mat-label>
+      <input matInput value="{{ email }}" type="email" [(ngModel)]="data.email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Birth Date</mat-label>
+      <input matInput [matDatepicker]="picker" [max]="todayDate" maxlength="0" value="{{ birthDate }}"
+        [(ngModel)]="data.birthDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Basic Salary</mat-label>
+      <input matInput value="{{ basicSalary }}" type="number" [(ngModel)]="data.basicSalary">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Status</mat-label>
+      <input matInput value="{{ status }}" [(ngModel)]="data.status">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Group</mat-label>
+      <mat-select [(value)]="selected" [(ngModel)]="data.group">
+        <mat-form-field appearance="outline" class="wp-padding">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="onKey($event.target.value)">
+        </mat-form-field>
+        <mat-option>NONE</mat-option>
+        <mat-option *ngFor="let dtGroup of selectedGroup" [value]="dtGroup">{{ dtGroup }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Description</mat-label>
+      <input matInput [matDatepicker]="pickerDes" maxlength="0" value="{{ description }}" [(ngModel)]="data.description">
+      <mat-datepicker-toggle matIconSuffix [for]="pickerDes"></mat-datepicker-toggle>
+      <mat-datepicker #pickerDes></mat-datepicker>
+    </mat-form-field>
+
+    <div align="end" *ngIf="!statusForm">
+      <button mat-button (click)="back()">Cancel</button>
+      <button mat-flat-button (click)="editData(data)">Save</button>
+    </div>
+
+    <div align="end" *ngIf="statusForm">
+      <button mat-button (click)="back()">Cancel</button>
+      <button mat-flat-button (click)="saveData(data)">Save</button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

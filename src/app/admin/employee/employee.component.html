@@ -1,1 +1,55 @@
-<p>employee works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="uk-flex">
+      <span class="uk-width-expand">Data Employee Management
+      </span>
+      <button mat-flat-button color="primary" (click)="addFormEmployee()">Add Employee
+      </button>
+    </div>
+    <div class="top-card">
+      <mat-card class="padding-card custom-responsive" *ngIf="employeesResult">
+        <table datatable class="row-border hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Username</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Birth Date</th>
+              <th>Basic Salary</th>
+              <th>Status</th>
+              <th>Group</th>
+              <th>Description</th>
+              <th>#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employees of employeesResult; let idx=index">
+              <td>{{ idx+1 }}</td>
+              <td><button mat-button color="primary" (click)="detailEmployee(employees)">{{ employees.username }}</button>
+              </td>
+              <td>{{ employees.firstName }}</td>
+              <td>{{ employees.lastName }}</td>
+              <td>{{ employees.email }}</td>
+              <td>{{ employees.birthDate }}</td>
+              <td>
+                {{ rupiahNumber(employees.basicSalary) }}
+              </td>
+              <td>{{ employees.status }}</td>
+              <td>{{ employees.group }}</td>
+              <td>{{ employees.description }}</td>
+              <td align="right">
+                <button mat-button class="custom-btn-yellow" (click)="editEmployee(employees.username)">Edit</button>
+                <button mat-button color="warn" (click)="deleteEmployee(employees.username)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>

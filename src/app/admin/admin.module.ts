@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { AdminComponent } from './admin.component';
+import { MaterialDesign } from '../material/material';
+import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 // route link
 const routes: Routes = [
@@ -19,7 +24,17 @@ const routes: Routes = [
       {
         path: 'employee',
         component: EmployeeComponent,
-        data:{animation:'employee'}
+        data: { animation: 'employee' }
+      },
+      {
+        path: 'employee/edit/:username',
+        component: EmployeeFormComponent,
+        data: { animation: 'employee' }
+      },
+      {
+        path: 'employee/add',
+        component: EmployeeFormComponent,
+        data: { animation: 'employee' }
       },
       {
         path: '',
@@ -35,11 +50,16 @@ const routes: Routes = [
   declarations: [
     DashboardComponent,
     AdminComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeDetailComponent,
+    EmployeeFormComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    MaterialDesign,
+    FormsModule,
+    DataTablesModule
   ]
 })
 export class AdminModule { }
