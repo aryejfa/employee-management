@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { EmployeeDetailComponent } from '../employee-detail/employee-detail.component';
+import { formatRupiah } from '../../utilities/utilities';
 
 @Component({
   selector: 'app-employee',
@@ -34,6 +35,7 @@ export class EmployeeComponent implements OnInit {
 
   dtOptions: any = {};
 
+  rupiahNumber: any = formatRupiah;
 
   constructor(
     public dialog: MatDialog,
@@ -73,7 +75,7 @@ export class EmployeeComponent implements OnInit {
 
   detailEmployee(data: any) {
     let dialog = this.dialog.open(EmployeeDetailComponent, {
-      width: '600px',
+      width: '800px',
       data: data
     });
     dialog.afterClosed().subscribe(res => {
@@ -126,14 +128,4 @@ export class EmployeeComponent implements OnInit {
       }
     });
   }
-
-
-  formatRupiah(number: any) {
-    let str = new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR"
-    }).format(number);
-    return str.replace("Rp", "Rp.");
-  }
-
 }
