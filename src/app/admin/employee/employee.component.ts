@@ -48,7 +48,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title = 'Employee';
+    this.title = 'Employee List';
     setTimeout(() => {
       this.toggleData();
     }, 1000)

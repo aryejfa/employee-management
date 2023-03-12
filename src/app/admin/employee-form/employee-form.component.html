@@ -5,9 +5,9 @@
   </mat-card-header>
   <mat-card-content>
     <div class="uk-flex">
-      <span class="uk-width-expand">Data Employee</span>
+      <span class="uk-width-expand">Data Employee Management</span>
     </div>
-    <mat-form-field appearance="outline" class="wp-custom-padding">
+    <mat-form-field appearance="outline" class="wp-custom-padding top-card">
       <mat-label>Username</mat-label>
       <input matInput value="{{ username }}" [(ngModel)]="data.username" readonly *ngIf="!statusForm">
       <input matInput value="{{ username }}" [(ngModel)]="data.username" *ngIf="statusForm">
