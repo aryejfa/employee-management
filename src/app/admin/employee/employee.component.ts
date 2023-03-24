@@ -69,6 +69,10 @@ export class EmployeeComponent implements OnInit {
     this.router.navigate(['admin/employee/edit', username]);
   }
 
+  detailsEmployee(username: any) {
+    this.router.navigate(['admin/employee/detail', username]);
+  }
+
   addFormEmployee() {
     this.router.navigate(['admin/employee/add']);
   }

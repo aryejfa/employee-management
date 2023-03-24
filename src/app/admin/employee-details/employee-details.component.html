@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Detail Employee</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="uk-flex">
+      <span class="uk-width-expand">Data Employee Management</span>
+    </div>
+    <mat-form-field appearance="outline" class="wp-custom-padding top-card">
+      <mat-label>Username</mat-label>
+      <input matInput value="{{ username }}" [(ngModel)]="data.username" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>First Name</mat-label>
+      <input matInput value="{{ firstName }}" [(ngModel)]="data.firstName" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Last Name</mat-label>
+      <input matInput value="{{ lastName }}" [(ngModel)]="data.lastName" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Email</mat-label>
+      <input matInput value="{{ email }}" type="email" [(ngModel)]="data.email" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Birth Date</mat-label>
+      <input matInput value="{{ birthDate }}" [(ngModel)]="data.birthDate" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Basic Salary</mat-label>
+      <input matInput [ngModel]="rupiahNumber(data.basicSalary)" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Status</mat-label>
+      <input matInput value="{{ status }}" [(ngModel)]="data.status" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Group</mat-label>
+      <input matInput [(ngModel)]="data.group" readonly>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="wp-padding">
+      <mat-label>Description</mat-label>
+      <input matInput value="{{ description }}" [(ngModel)]="data.description" readonly>
+    </mat-form-field>
+
+    <div align="end">
+      <button mat-button (click)="back()">Ok</button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

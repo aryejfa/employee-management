@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 // route link
 const routes: Routes = [
@@ -32,6 +33,11 @@ const routes: Routes = [
         data: { animation: 'employee' }
       },
       {
+        path: 'employee/detail/:username',
+        component: EmployeeDetailsComponent,
+        data: { animation: 'employee' }
+      },
+      {
         path: 'employee/add',
         component: EmployeeFormComponent,
         data: { animation: 'employee' }
@@ -52,7 +58,8 @@ const routes: Routes = [
     AdminComponent,
     EmployeeComponent,
     EmployeeDetailComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     CommonModule,

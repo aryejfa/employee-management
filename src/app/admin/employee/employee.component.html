@@ -43,6 +43,7 @@
               <td>{{ employees.group }}</td>
               <td>{{ employees.description }}</td>
               <td align="right">
+                <button mat-button class="custom-btn-blue" (click)="detailsEmployee(employees.username)">Detail</button>
                 <button mat-button class="custom-btn-yellow" (click)="editEmployee(employees.username)">Edit</button>
                 <button mat-button color="warn" (click)="deleteEmployee(employees.username)">Delete</button>
               </td>
